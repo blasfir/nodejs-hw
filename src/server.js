@@ -3,7 +3,7 @@ import 'dotenv/config';
 import cors from 'cors';
 import pino from 'pino-http';
 
-//const PORT = process.env.PORT ?? 3030;
+const PORT = process.env.PORT ?? 3030;
 
 const app = express();
 app.use(express.json());
@@ -46,4 +46,8 @@ app.use((err, req, res, next) => {
   res.status(500).json({
   "message": isProd ? "Something went wrong. Please try again later." : err.message
   });
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
